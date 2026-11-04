@@ -1,0 +1,14 @@
+{
+  "dossier_archive": "{BUREAU}/Archive mail",
+  "comptes": [],
+  "recuperation": {
+    "roles": [
+      "réception",
+      "envoyés",
+      "brouillons"
+    ],
+    "dossiers_inclus": [],
+    "dossiers_exclus": [],
+    "sauvegarder_mails": true
+  }
+}

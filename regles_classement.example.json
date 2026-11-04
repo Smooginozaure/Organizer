@@ -1,0 +1,977 @@
+{
+  "_aide": [
+    "Règles de classement. Modifiable avec le Bloc-notes.",
+    "Arborescence : <Type de document>/<Domaine>/<Sous-domaine>/<Année>, ex. Factures/Énergie/Électricité - Gaz/2024.",
+    "'types' : le type de document (facture, ticket, contrat…). 'regles' : le domaine (énergie, santé, logement…).",
+    "Dans chaque règle : 'mots' = mots-clés cherchés dans le nom du fichier, l'objet du mail et le texte du document ;",
+    "'expediteurs' = adresses ou domaines (règles de domaine uniquement). Majuscules et accents sont ignorés.",
+    "Un mot dans le nom du fichier ou l'objet compte plus que dans le texte. 'poids' : 0.5 pour les règles très générales."
+  ],
+  "seuil": 2,
+  "regles": [
+    {
+      "theme": "Assurances/Assurance vie",
+      "mots": [
+        "assurance vie",
+        "assurance-vie",
+        "contrat de capitalisation",
+        "plan epargne retraite",
+        "epargne retraite",
+        "per individuel",
+        "clause beneficiaire",
+        "releve de situation annuel",
+        "versement libre",
+        "arbitrage"
+      ]
+    },
+    {
+      "theme": "Assurances/Habitation",
+      "mots": [
+        "assurance habitation",
+        "multirisque habitation",
+        "mrh",
+        "attestation habitation",
+        "garantie habitation"
+      ]
+    },
+    {
+      "theme": "Assurances/Auto - Moto",
+      "mots": [
+        "assurance auto",
+        "assurance automobile",
+        "assurance moto",
+        "carte verte",
+        "memo vehicule assure",
+        "constat amiable",
+        "bonus malus",
+        "releve d information"
+      ]
+    },
+    {
+      "theme": "Assurances/Santé - Mutuelle",
+      "mots": [
+        "mutuelle",
+        "complementaire sante",
+        "tiers payant",
+        "carte de tiers payant",
+        "remboursement soins",
+        "decompte de remboursement",
+        "prevoyance"
+      ],
+      "expediteurs": [
+        "mgen.fr",
+        "harmonie-mutuelle.fr",
+        "malakoffhumanis.com",
+        "uneo.fr",
+        "intériale.fr",
+        "interiale.fr"
+      ]
+    },
+    {
+      "theme": "Assurances/Autres",
+      "mots": [
+        "assurance",
+        "attestation d assurance",
+        "avis d echeance",
+        "echeancier",
+        "sinistre",
+        "conditions particulieres",
+        "conditions generales",
+        "souscription",
+        "garanties"
+      ],
+      "expediteurs": [
+        "axa.fr",
+        "maif.fr",
+        "macif.fr",
+        "matmut.fr",
+        "allianz.fr",
+        "generali.fr",
+        "groupama.fr",
+        "gmf.fr",
+        "maaf.fr",
+        "mma.fr",
+        "ag2rlamondiale.fr"
+      ],
+      "poids": 0.7
+    },
+    {
+      "theme": "Logement/Location",
+      "mots": [
+        "bail",
+        "contrat de location",
+        "quittance",
+        "quittance de loyer",
+        "loyer",
+        "etat des lieux",
+        "depot de garantie",
+        "locataire",
+        "bailleur",
+        "preavis",
+        "avis d echeance loyer",
+        "caution solidaire",
+        "dossier de location"
+      ]
+    },
+    {
+      "theme": "Logement/Achat - Prêt immobilier",
+      "mots": [
+        "compromis de vente",
+        "promesse de vente",
+        "acte de vente",
+        "acte authentique",
+        "notaire",
+        "office notarial",
+        "pret immobilier",
+        "offre de pret",
+        "titre de propriete",
+        "diagnostic immobilier"
+      ]
+    },
+    {
+      "theme": "Logement/Copropriété - Charges",
+      "mots": [
+        "syndic",
+        "copropriete",
+        "assemblee generale",
+        "appel de fonds",
+        "appel de charges",
+        "regularisation des charges",
+        "proces verbal d ag"
+      ]
+    },
+    {
+      "theme": "Logement/Travaux",
+      "mots": [
+        "devis",
+        "travaux",
+        "artisan",
+        "facture travaux",
+        "renovation",
+        "plomberie",
+        "electricien",
+        "maprimerenov"
+      ],
+      "poids": 0.7
+    },
+    {
+      "theme": "Énergie/Électricité - Gaz",
+      "mots": [
+        "electricite",
+        "gaz naturel",
+        "facture d energie",
+        "kwh",
+        "releve de compteur",
+        "compteur linky",
+        "point de livraison",
+        "contrat d energie",
+        "echeancier energie",
+        "mensualisation energie",
+        "fioul",
+        "granules"
+      ],
+      "expediteurs": [
+        "edf.fr",
+        "engie.com",
+        "engie.fr",
+        "enedis.fr",
+        "grdf.fr",
+        "totalenergies.fr",
+        "ekwateur.fr",
+        "mint-energie.com",
+        "ohm-energie.com",
+        "vattenfall.fr",
+        "eni.fr",
+        "octopusenergy.fr"
+      ]
+    },
+    {
+      "theme": "Énergie/Eau",
+      "mots": [
+        "facture d eau",
+        "consommation d eau",
+        "eau potable",
+        "assainissement",
+        "abonnement eau"
+      ],
+      "expediteurs": [
+        "veolia.com",
+        "veolia.fr",
+        "suez.fr",
+        "toutsurmoneau.fr",
+        "saur.fr",
+        "eaudeparis.fr"
+      ]
+    },
+    {
+      "theme": "Télécom - Internet",
+      "mots": [
+        "facture mobile",
+        "forfait mobile",
+        "freebox",
+        "livebox",
+        "bbox",
+        "box internet",
+        "fibre optique",
+        "ligne fixe",
+        "facture free",
+        "free mobile",
+        "resiliation box"
+      ],
+      "expediteurs": [
+        "free-mobile.fr",
+        "freetelecom.fr",
+        "factures.free.fr",
+        "orange.com",
+        "bouyguestelecom.fr",
+        "sosh.fr",
+        "red-by-sfr.fr",
+        "redbysfr.fr"
+      ],
+      "poids": 0.8
+    },
+    {
+      "theme": "Banque - Finances/Relevés et RIB",
+      "mots": [
+        "releve de compte",
+        "releve bancaire",
+        "releve d identite bancaire",
+        "rib",
+        "iban",
+        "extrait de compte",
+        "avis d operation",
+        "virement"
+      ]
+    },
+    {
+      "theme": "Banque - Finances/Crédits",
+      "mots": [
+        "offre de credit",
+        "credit a la consommation",
+        "pret personnel",
+        "tableau d amortissement",
+        "echeancier de pret",
+        "credit renouvelable",
+        "rachat de credit"
+      ]
+    },
+    {
+      "theme": "Banque - Finances/Épargne - Placements",
+      "mots": [
+        "livret a",
+        "ldds",
+        "pea",
+        "compte titres",
+        "releve de portefeuille",
+        "ifu",
+        "imprime fiscal unique",
+        "epargne salariale",
+        "interessement",
+        "participation"
+      ]
+    },
+    {
+      "theme": "Impôts",
+      "mots": [
+        "impot",
+        "impots",
+        "avis d imposition",
+        "impot sur le revenu",
+        "declaration de revenus",
+        "taxe fonciere",
+        "taxe d habitation",
+        "prelevement a la source",
+        "avis de situation declarative",
+        "dgfip",
+        "tresor public",
+        "credit d impot"
+      ],
+      "expediteurs": [
+        "impots.gouv.fr",
+        "dgfip.finances.gouv.fr"
+      ]
+    },
+    {
+      "theme": "Santé",
+      "mots": [
+        "ordonnance",
+        "compte rendu",
+        "resultats d analyses",
+        "laboratoire",
+        "analyses medicales",
+        "radiologie",
+        "echographie",
+        "irm",
+        "scanner medical",
+        "feuille de soins",
+        "certificat medical",
+        "arret de travail",
+        "hopital",
+        "clinique",
+        "vaccination",
+        "carte vitale",
+        "dossier medical"
+      ],
+      "expediteurs": [
+        "ameli.fr",
+        "assurance-maladie.fr",
+        "doctolib.fr",
+        "biogroup.fr",
+        "cerballiance.fr",
+        "eurofins-biomnis.com"
+      ]
+    },
+    {
+      "theme": "Travail/Bulletins de salaire",
+      "mots": [
+        "bulletin de paie",
+        "bulletin de salaire",
+        "fiche de paie",
+        "bulletin de solde",
+        "net a payer",
+        "cumul imposable"
+      ]
+    },
+    {
+      "theme": "Travail/Contrats - Carrière",
+      "mots": [
+        "contrat de travail",
+        "avenant au contrat",
+        "attestation employeur",
+        "certificat de travail",
+        "lettre d embauche",
+        "promotion",
+        "mutation",
+        "avancement",
+        "notation",
+        "entretien annuel",
+        "france travail",
+        "pole emploi",
+        "curriculum vitae",
+        "cv"
+      ]
+    },
+    {
+      "theme": "Travail/Professionnel",
+      "mots": [
+        "gendarmerie",
+        "note de service",
+        "ordre de mission",
+        "passeport de service",
+        "memento fo",
+        "force ouvriere",
+        "syndicat",
+        "frais de deplacement",
+        "formation professionnelle"
+      ],
+      "expediteurs": [
+        "gendarmerie.interieur.gouv.fr",
+        "interieur.gouv.fr",
+        "diplomatie.gouv.fr"
+      ]
+    },
+    {
+      "theme": "Administratif/Identité - État civil",
+      "mots": [
+        "carte d identite",
+        "carte nationale d identite",
+        "passeport",
+        "acte de naissance",
+        "acte de mariage",
+        "livret de famille",
+        "extrait d acte",
+        "justificatif de domicile",
+        "titre de sejour",
+        "ants",
+        "pacs"
+      ],
+      "expediteurs": [
+        "ants.gouv.fr",
+        "service-public.fr"
+      ]
+    },
+    {
+      "theme": "Administratif/Courriers officiels",
+      "mots": [
+        "prefecture",
+        "mairie",
+        "caf",
+        "allocations familiales",
+        "retraite",
+        "carsat",
+        "attestation de droits",
+        "service public",
+        "amende",
+        "avis de contravention",
+        "antai"
+      ],
+      "expediteurs": [
+        "caf.fr",
+        "service-public.fr",
+        "antai.gouv.fr",
+        "info-retraite.fr",
+        "lassuranceretraite.fr"
+      ],
+      "poids": 0.8
+    },
+    {
+      "theme": "Véhicule",
+      "mots": [
+        "carte grise",
+        "certificat d immatriculation",
+        "controle technique",
+        "entretien vehicule",
+        "revision vehicule",
+        "bon de commande vehicule",
+        "permis de conduire",
+        "garage",
+        "pneumatiques",
+        "vidange"
+      ]
+    },
+    {
+      "theme": "Juridique",
+      "mots": [
+        "avocat",
+        "tribunal",
+        "huissier",
+        "commissaire de justice",
+        "jugement",
+        "mise en demeure",
+        "assignation",
+        "proces verbal",
+        "plainte",
+        "requete",
+        "conciliation",
+        "succession",
+        "testament"
+      ]
+    },
+    {
+      "theme": "Scolarité - Formation",
+      "mots": [
+        "certificat de scolarite",
+        "bulletin scolaire",
+        "bulletin trimestriel",
+        "diplome",
+        "attestation de formation",
+        "inscription scolaire",
+        "releve de notes",
+        "cantine",
+        "periscolaire",
+        "universite",
+        "parcoursup"
+      ]
+    },
+    {
+      "theme": "Voyages - Loisirs",
+      "mots": [
+        "billet",
+        "e-billet",
+        "carte d embarquement",
+        "boarding pass",
+        "reservation",
+        "confirmation de reservation",
+        "itineraire",
+        "voucher",
+        "hotel",
+        "location de vacances",
+        "billetterie"
+      ],
+      "expediteurs": [
+        "sncf.com",
+        "sncf-connect.com",
+        "airfrance.fr",
+        "airfrance.com",
+        "booking.com",
+        "airbnb.com",
+        "easyjet.com",
+        "ryanair.com",
+        "ouigo.com",
+        "trainline.com"
+      ],
+      "poids": 0.8
+    },
+    {
+      "theme": "Achats/Courses",
+      "mots": [
+        "super u",
+        "hyper u",
+        "magasin u",
+        "magasins u",
+        "carrefour",
+        "leclerc",
+        "intermarche",
+        "auchan",
+        "lidl",
+        "monoprix"
+      ],
+      "expediteurs": [
+        "magasins-u.com",
+        "systeme-u.fr",
+        "carrefour.fr",
+        "intermarche.com",
+        "auchan.fr",
+        "lidl.fr"
+      ]
+    },
+    {
+      "theme": "Achats/Restauration",
+      "mots": [
+        "mcdonald",
+        "mcdonald s",
+        "burger king",
+        "kfc",
+        "restaurant",
+        "uber eats",
+        "deliveroo"
+      ],
+      "expediteurs": [
+        "mcdonalds.fr",
+        "burgerking.fr",
+        "kfc.fr",
+        "ubereats.com",
+        "deliveroo.fr"
+      ]
+    },
+    {
+      "theme": "Achats/Ventes en ligne",
+      "mots": [
+        "vinted",
+        "leboncoin",
+        "chronopost",
+        "colissimo",
+        "mondial relay",
+        "relais colis",
+        "lettre de transport",
+        "bordereau d envoi"
+      ],
+      "expediteurs": [
+        "vinted.fr",
+        "vinted.com",
+        "leboncoin.fr",
+        "chronopost.fr",
+        "mondialrelay.fr"
+      ]
+    },
+    {
+      "theme": "Achats/Poste",
+      "mots": [
+        "bureau de poste",
+        "lettre reco",
+        "lettre recommandee",
+        "ar courrier"
+      ]
+    },
+    {
+      "theme": "Véhicule/Péages",
+      "mots": [
+        "peage",
+        "flux libre",
+        "portique",
+        "autoroute",
+        "telepeage",
+        "bip go"
+      ],
+      "expediteurs": [
+        "sanef.com",
+        "vinci-autoroutes.com",
+        "aprr.fr",
+        "bipandgo.com"
+      ]
+    },
+    {
+      "theme": "Logement/Déménagement",
+      "mots": [
+        "demenagement",
+        "lettre de voiture",
+        "garde meubles",
+        "demenageur"
+      ]
+    },
+    {
+      "theme": "Administratif/Justificatifs de domicile",
+      "mots": [
+        "attestation d hebergement",
+        "heberge a titre gratuit",
+        "justificatif de domicile"
+      ]
+    },
+    {
+      "theme": "Loisirs/Tir sportif",
+      "mots": [
+        "tir sportif",
+        "fftir",
+        "federation francaise de tir",
+        "stand de tir",
+        "licence de tir",
+        "arme categorie",
+        "armes categorie",
+        "cat b",
+        "armurier",
+        "calibre",
+        "munitions"
+      ],
+      "expediteurs": [
+        "fftir.org"
+      ]
+    },
+    {
+      "theme": "Loisirs/Handball",
+      "mots": [
+        "handball",
+        "netathlon"
+      ],
+      "expediteurs": []
+    },
+    {
+      "theme": "Loisirs/Musique",
+      "mots": [
+        "partition",
+        "imslp",
+        "toccata",
+        "fugue",
+        "orgue",
+        "orgues"
+      ],
+      "expediteurs": []
+    },
+    {
+      "theme": "Loisirs/Jeux vidéo",
+      "mots": [
+        "steam",
+        "valve",
+        "playstation",
+        "xbox",
+        "nintendo"
+      ],
+      "expediteurs": [
+        "steampowered.com",
+        "valvesoftware.com"
+      ]
+    },
+    {
+      "theme": "Achats",
+      "mots": [
+        "facture",
+        "commande",
+        "bon de commande",
+        "bon de livraison",
+        "confirmation de commande",
+        "recu",
+        "ticket de caisse",
+        "garantie",
+        "avoir",
+        "remboursement"
+      ],
+      "expediteurs": [
+        "amazon.fr",
+        "amazon.com",
+        "fnac.com",
+        "darty.com",
+        "cdiscount.com",
+        "leboncoin.fr",
+        "paypal.fr",
+        "paypal.com",
+        "apple.com"
+      ],
+      "poids": 0.5
+    },
+    {
+      "theme": "Contrats/Autres contrats",
+      "mots": [
+        "contrat",
+        "avenant",
+        "conditions generales de vente",
+        "resiliation",
+        "souscription",
+        "mandat sepa",
+        "mandat de prelevement"
+      ],
+      "poids": 0.5
+    }
+  ],
+  "types": [
+    {
+      "type": "Tickets de caisse",
+      "mots": [
+        "ticket de caisse",
+        "ticket client",
+        "ticket de cb",
+        "ticket cb",
+        "ticket client a conserver",
+        "ticket caisse",
+        "caisse n",
+        "ticket"
+      ]
+    },
+    {
+      "type": "Bulletins de salaire",
+      "mots": [
+        "bulletin de paie",
+        "bulletin de salaire",
+        "fiche de paie",
+        "bulletin de solde",
+        "net a payer",
+        "cumul imposable"
+      ]
+    },
+    {
+      "type": "Impôts et avis fiscaux",
+      "mots": [
+        "avis d imposition",
+        "declaration de revenus",
+        "taxe fonciere",
+        "taxe d habitation",
+        "avis de situation declarative",
+        "impot sur le revenu",
+        "avis d impot"
+      ]
+    },
+    {
+      "type": "Factures",
+      "mots": [
+        "facture",
+        "factures",
+        "invoice",
+        "avoir",
+        "note d honoraires",
+        "numero de facture",
+        "invoice number",
+        "total ttc",
+        "montant ttc"
+      ]
+    },
+    {
+      "type": "Reçus et paiements",
+      "mots": [
+        "recu",
+        "receipt",
+        "recu de paiement",
+        "confirmation de paiement",
+        "avis de paiement",
+        "attestation de paiement",
+        "quittance",
+        "quittance de loyer",
+        "paiement"
+      ]
+    },
+    {
+      "type": "Relevés et décomptes",
+      "mots": [
+        "releve de compte",
+        "releve bancaire",
+        "releve",
+        "decompte",
+        "decompte de remboursement",
+        "detail des versements",
+        "bordereau de facturation",
+        "releve de situation",
+        "tableau d amortissement",
+        "echeancier",
+        "avis d echeance"
+      ]
+    },
+    {
+      "type": "Contrats",
+      "mots": [
+        "contrat",
+        "bail",
+        "avenant",
+        "conditions particulieres",
+        "offre de pret",
+        "compromis de vente",
+        "acte de vente",
+        "mandat",
+        "contrat de mise a disposition",
+        "lettre de voiture",
+        "souscription"
+      ]
+    },
+    {
+      "type": "Conditions générales et règlements",
+      "mots": [
+        "conditions generales",
+        "cgv",
+        "cgu",
+        "cguv",
+        "reglement interieur",
+        "reglement",
+        "politique de confidentialite",
+        "politique de protection",
+        "regles de conduite",
+        "mentions legales",
+        "charte"
+      ]
+    },
+    {
+      "type": "Documents médicaux",
+      "mots": [
+        "ordonnance",
+        "compte rendu de consultation",
+        "resultats d analyses",
+        "prescription",
+        "certificat medical",
+        "radiographie",
+        "echographie",
+        "cher confrere",
+        "patient",
+        "consultation"
+      ]
+    },
+    {
+      "type": "Attestations et certificats",
+      "mots": [
+        "attestation",
+        "certificat",
+        "justificatif",
+        "je soussigne",
+        "atteste",
+        "attestation d hebergement",
+        "licence",
+        "diplome",
+        "carte verte"
+      ]
+    },
+    {
+      "type": "Identité et état civil",
+      "mots": [
+        "carte d identite",
+        "carte nationale d identite",
+        "passeport",
+        "acte de naissance",
+        "acte de mariage",
+        "livret de famille",
+        "permis de conduire",
+        "titre de sejour",
+        "carte grise",
+        "certificat d immatriculation"
+      ]
+    },
+    {
+      "type": "Devis, commandes et offres",
+      "mots": [
+        "devis",
+        "bon de commande",
+        "confirmation de commande",
+        "order confirmation",
+        "proposition commerciale",
+        "grille de prix",
+        "offre commerciale",
+        "bon de depot",
+        "atelier",
+        "commande"
+      ]
+    },
+    {
+      "type": "Billets et réservations",
+      "mots": [
+        "billet",
+        "billets",
+        "e billet",
+        "boarding pass",
+        "carte d embarquement",
+        "reservation",
+        "fast pass",
+        "one day pass",
+        "voucher",
+        "entree"
+      ]
+    },
+    {
+      "type": "Envois et colis",
+      "mots": [
+        "lettre de transport",
+        "bordereau d envoi",
+        "bordereau",
+        "bon d envoi",
+        "etiquette",
+        "n de colis",
+        "colis",
+        "expedition",
+        "chrono relais",
+        "parcel",
+        "fiche destinataire"
+      ]
+    },
+    {
+      "type": "Formulaires",
+      "mots": [
+        "cerfa",
+        "formulaire",
+        "fiche d inscription",
+        "bulletin d adhesion",
+        "bulletin d inscription",
+        "coupon",
+        "a remplir",
+        "a completer",
+        "a faire completer"
+      ]
+    },
+    {
+      "type": "Rapports et comptes rendus",
+      "mots": [
+        "rapport",
+        "rapport de stage",
+        "compte rendu",
+        "proces verbal",
+        "synthese",
+        "bilan"
+      ]
+    },
+    {
+      "type": "Annonces et fiches produits",
+      "mots": [
+        "a vendre",
+        "vente",
+        "vente arme",
+        "caracteristiques",
+        "fiche produit",
+        "catalogue",
+        "equipement inclus",
+        "equipements inclus"
+      ]
+    },
+    {
+      "type": "Notices, guides et présentations",
+      "mots": [
+        "notice",
+        "mode d emploi",
+        "guide",
+        "documentation",
+        "presentation",
+        "flyer",
+        "brochure",
+        "newsletter",
+        "tutoriel",
+        "procedure",
+        "memento",
+        "instruction",
+        "creation d un compte",
+        "activation de votre compte"
+      ]
+    },
+    {
+      "type": "Partitions",
+      "mots": [
+        "partition",
+        "imslp",
+        "sheet music",
+        "toccata",
+        "fugue"
+      ]
+    },
+    {
+      "type": "Courriers",
+      "mots": [
+        "madame",
+        "monsieur",
+        "lettre",
+        "courrier",
+        "circulaire",
+        "objet"
+      ],
+      "poids": 0.6
+    }
+  ]
+}
